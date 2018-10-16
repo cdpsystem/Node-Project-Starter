@@ -19,6 +19,6 @@ let Config = {
 	mongoPort : 27017,
 
 	//Mongo database
-	mongoDB : 'test',
+	mongoDB : '',
 };
 module.exports = Config;

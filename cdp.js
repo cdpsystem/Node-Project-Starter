@@ -4,7 +4,10 @@ let mongoose = require('mongoose');
 let app = require('./app');
 let Config = require('./config/config');
 let Colorizer = require('./utils/logColorizer');
+let Clear = require('clear');
 
+Clear();
+Colorizer.fwcdWd();
 
 if(Config.mongoDB == ''){
 	Colorizer.err("Error: Specify a database in config/config.js is needed to continue",true);
