@@ -32,7 +32,7 @@ let Colorizer = {
 		console.log("\\___\/____\/_\/    \/___\/\\_, \/___\/\\__\/\\__\/_\/_\/_\/ \/_\/|_\/\\____\/____\/___\/                           ");
 		console.log("                    \/___\/                                                                    ");
 		console.log("");
-		console.log(' Creado por Cristian Diaz Prado')
+		console.log(' Creado por Cristian Diaz Prado ( No, el de cuba no)')
 		console.log(" ____________________________________________________________________________________");
 		console.log("\/___\/___\/___\/___\/___\/___\/___\/___\/___\/___\/___\/___\/___\/___\/___\/___\/___\/___\/___\/___\/___\/");
 		console.log("\x1b[0m");

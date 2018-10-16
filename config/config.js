@@ -20,5 +20,9 @@ let Config = {
 
 	//Mongo database
 	mongoDB : '',
+	//Mongo Username
+	mongoUser: '',
+	//MongoPass
+	mongoPass: ''
 };
 module.exports = Config;
