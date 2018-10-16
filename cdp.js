@@ -1,13 +1,24 @@
 'use strict'
 
 let mongoose = require('mongoose');
-let app = require('./app');
-let Config = require('./config/config');
 let Colorizer = require('./utils/logColorizer');
 let Clear = require('clear');
+let Config;
 
 Clear();
 Colorizer.fwcdWd();
+
+try{
+	Config = require('./config/config');
+} catch(err){
+	Colorizer.err("Error: config.js not found. Remember to rename and configurate config.js before start the application",true)
+	return false
+}
+
+//A partir de este punto se entiende que config.js está cargado
+let app = require('./app');
+
+
 
 if(Config.mongoDB == ''){
 	Colorizer.err("Error: Specify a database in config/config.js is needed to continue",true);

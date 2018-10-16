@@ -19,7 +19,7 @@ let Config = {
 	mongoPort : 27017,
 
 	//Mongo database
-	mongoDB : 'your database here',
+	mongoDB : '',
 
 	//Mongo Username
 	mongoUser: '',
