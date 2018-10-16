@@ -3,30 +3,35 @@
 let mongoose = require('mongoose');
 let app = require('./app');
 let Config = require('./config/config');
+let Colorizer = require('./utils/logColorizer');
 
 
 if(Config.mongoDB == ''){
-	console.log('');
-	console.log("\x1b[31m\x1b[47m%s\x1b[0m","Error: Specify a database in config/config.js is needed to continue");
-	console.log('');
+	Colorizer.err("Error: Specify a database in config/config.js is needed to continue",true);
 	return false;
 }
 
-console.log('');
-console.log(new Date(),"Connecting with " + Config.mongoIP + ":" + Config.mongoPort + "/" + Config.mongoDB );
+
+Colorizer.ok("Connecting with " + Config.mongoIP + ":" + Config.mongoPort + "/" + Config.mongoDB ,true);
 mongoose.Promise = global.Promise;
 
 mongoose.connect('mongodb://' + Config.mongoIP +  ':' + Config.mongoPort + '/' + Config.mongoDB,{useNewUrlParser: true } )
 .then( ()=>{
 	//Conexion realizada correctamente	
-	console.log('')	;
-	console.log("\x1b[\x1b[32mConnected with \x1b[33m" + Config.mongoDB + ' \x1b[32mdatabase in port \x1b[33m' + Config.mongoPort);
 
+	Colorizer.ok("Connected with " + Config.mongoDB.toUpperCase() +" database in",true)
+	Colorizer.value("Mongo ip",Config.mongoIP);
+	Colorizer.value("Mongo Port",Config.mongoPort);
 	app.listen(Config.serverPort,()=>{
-		console.log("\x1b[32mNode Server up in -> \x1b[33mlocalhost:"+Config.serverPort);
-		console.log('\x1b[0m');
-		});
-	})
+		Colorizer.ok("Node server listening in",true);
+		Config.apiPath != '' ? 
+			Colorizer.value("Server ip",Config.serverIP + Config.apiPath + '/' ) : 
+			Colorizer.value("Server ip",Config.serverIP);
+		Colorizer.value("Server port",Config.serverPort);
+
+		Colorizer.ok("Server waiting for requests")
+	});
+})
 	.catch(err => {
 		//Error no se ha podido conectar a la base de datos
 		console.log(err);

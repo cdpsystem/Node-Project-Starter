@@ -1,5 +1,8 @@
 'use strict'
 let Config = {
+
+	//Server Ip, not change, not supported yet
+	serverIP : 'http://localhost/',
 	//Node Port
 	serverPort : 3700,
 
@@ -7,7 +10,7 @@ let Config = {
 	routerPath: './routes/router',
 
 	//Prefix for api, can be empty
-	apiPath : '',
+	apiPath : 'test',
 
 	//Ip of mongo database
 	mongoIP : 'localhost',
@@ -16,6 +19,6 @@ let Config = {
 	mongoPort : 27017,
 
 	//Mongo database
-	mongoDB : '',
+	mongoDB : 'test',
 };
 module.exports = Config;
