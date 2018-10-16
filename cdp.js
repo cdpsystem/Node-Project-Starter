@@ -35,7 +35,8 @@ mongoose.connect('mongodb://' + Config.mongoIP +  ':' + Config.mongoPort + '/' +
 		Colorizer.ok("Server waiting for requests")
 	});
 })
-	.catch(err => {
-		//Error no se ha podido conectar a la base de datos
-		console.log(err);
-	}); 
+.catch(err => {
+	//Error no se ha podido conectar a la base de datos
+	Colorizer.err("Error. Can't connect to the mongo database. Is it Mongod running?",true);
+	Colorizer.err(err);
+}); 
