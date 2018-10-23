@@ -1,0 +1,29 @@
+html,body{
+	width: 100%;
+	height: 100%;
+	padding:0;
+	margin: 0;
+	background-color: #f6f6f9;
+}
+.error{
+	background-color: #161616;
+}
+.error h1{
+    font-family: 'Roboto', sans-serif;
+    background: #feccb1; /* Old browsers */
+    background: -moz-linear-gradient(-45deg,  #feccb1 0%, #f17432 50%, #ea5507 51%, #fb955e 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg,  #feccb1 0%,#f17432 50%,#ea5507 51%,#fb955e 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg,  #feccb1 0%,#f17432 50%,#ea5507 51%,#fb955e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feccb1', endColorstr='#fb955e',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+    background-clip: text;
+    text-fill-color: transparent;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.error h3{
+	font-family: 'Roboto', sans-serif;
+	color:white;
+}
