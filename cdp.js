@@ -3,10 +3,16 @@
 let mongoose = require('mongoose');
 let Colorizer = require('./utils/logColorizer');
 let Clear = require('clear');
+// Archivo de enviroments
+require('dotenv').config()
+
+
 let Config;
 
 Clear();
 Colorizer.fwcdWd();
+
+Colorizer.ok(process.env.LOADED);
 
 try{
 	Config = require('./config/config');

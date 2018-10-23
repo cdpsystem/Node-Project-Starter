@@ -4,6 +4,7 @@ let express = require('express');
 let bodyParser = require('body-parser');
 let app = express();
 let Config = require('./config/config');
+let path = require('path');
 
 //Middlewares
 app.use(bodyParser.urlencoded({extended:false}));
@@ -20,5 +21,11 @@ app.use(function (req, res, next) {
 
 //router
 app.use(Config.apiPath,require(Config.routerPath));
+
+app.use(express.static(__dirname + '/404'))
+
+app.use(function(req, res, next) {
+   	res.status(404).sendFile('404.html', {root: '404/'});
+});
 
 module.exports = app;
