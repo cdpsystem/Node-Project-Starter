@@ -37,14 +37,18 @@ if(allowedIps[0] !== '0.0.0.0'){
     if (allowedIps.indexOf(ip) >= 0){
       next();
     }else{
-
-      fs.readFile(__dirname+'/logs/ipblocked.log', function (err, data) {
-        if (err) console.log(err);
-        if(data.indexOf(ip) == -1){      
-          fs.appendFile(__dirname+'/logs/ipblocked.log',ip + '\n',(err)=>{if(err)console.log(err)})
-        }
-      });
-      
+      if(process.env.LOGIPBLOCK){
+        fs.exists(__dirname+'/logs/ipblocked.log',(exists)=>{
+          if(!exists) fs.writeFileSync(__dirname+'/logs/ipblocked.log','# Structure:\n# ip',null);
+          fs.readFile(__dirname+'/logs/ipblocked.log', function (err, data) {
+            if (err) console.log(err);
+            if(data.indexOf(ip) == -1){      
+              fs.appendFile(__dirname+'/logs/ipblocked.log',ip + '\n',(err)=>{if(err)console.log(err)})
+            }
+          });
+        })                
+      }
+      console.log(ip)
       return res.status(301).send({message: 'Your IP is not allowed to use this API',ip: ip});  
     }
   });
@@ -71,6 +75,9 @@ app.set('view engine', 'pug')
 app.disable('view cache');
 Colorizer.ok('Loaded PUG options')
 
+//Block normal favicon
+app.get('/favicon.ico', (req, res) => res.status(204));
+
 //Carpeta estatica
 app.use(express.static(__dirname + '/public'));
 Colorizer.ok('Loaded static folder for PUG files')
@@ -81,7 +88,19 @@ if(instance === 'dev'){
     let loadTime = Date.now() - req.msStartRequest;
     let ip = req.ip.split(':').slice(-1)[0];
     let requestUrl = req.originalUrl;
-    res.status(404).render('404', 
+
+    if(process.env.LOG404){
+      fs.exists(__dirname+'/logs/404.log',(exists)=>{
+        if(!exists) fs.writeFileSync(__dirname+'/logs/404.log','# Structure\n# ip,path',null);
+        fs.readFile(__dirname+'/logs/404.log', function (err, data) {
+          if (err) console.log(err);    
+          fs.appendFile(__dirname+'/logs/404.log',ip +','+requestUrl+ '\n',(err)=>{if(err)console.log(err)})          
+        });
+      })                
+    }
+
+
+    return res.status(404).render('404', 
       {
         url: req.originalUrl,
         loadTime: loadTime,

@@ -6,6 +6,7 @@ html(lang="en")
   script(src='/js/popper/popper.min.js')
   script(src='/js/bootstrap/bootstrap.min.js')
   script(src='/js/global.js')
+  link(rel='shortcut icon' href='/favicon.png' type='image/png')
 
   link(rel='stylesheet' href='/css/bootstrap/bootstrap.css')
   link(rel='stylesheet' href='/css/global.css')
@@ -17,7 +18,7 @@ html(lang="en")
    div(class='row')
     div(class='col-md-11 error')
      h1= 'CDP System Node - Error '+error
-    div(class='col-md-1 error')
+    div(class='col-md-1 error text-right')
      p= 'Load Time: 0.00' + loadTime
 
   div(class='container body-container')
