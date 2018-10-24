@@ -15,10 +15,18 @@ html(lang="en")
 
   div(class='container-fluid')
    div(class='row')
-    div(class='col-md-10 error')
-     h1 CDP System Node - Error 404
-    div(class='col-md-2 error')
-     h3= '0.00'+loadTime+' S'
+    div(class='col-md-11 error')
+     h1= 'CDP System Node - Error '+error
+    div(class='col-md-1 error')
+     p= 'Load Time: 0.00' + loadTime
 
-  div(class='container')
-   p HOLAA que tal
+  div(class='container body-container')
+   div(class='row')
+    div(class='col-md-12 body-title text-center')
+     h2 Ups something when wrong
+    div(class='col-md-12 body-header')
+     p="There's some information about the request"
+    div(class='col-md-12 body-info')
+     ul
+      li= 'Request ip: ' + ip
+      li= 'Request path: ' + requestUrl

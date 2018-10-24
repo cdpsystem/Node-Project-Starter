@@ -4,12 +4,12 @@ html,body{
 	padding:0;
 	margin: 0;
 	background-color: #f6f6f9;
+    font-family: 'Roboto', sans-serif;
 }
 .error{
 	background-color: #161616;
 }
 .error h1{
-    font-family: 'Roboto', sans-serif;
     background: #feccb1; /* Old browsers */
     background: -moz-linear-gradient(-45deg,  #feccb1 0%, #f17432 50%, #ea5507 51%, #fb955e 100%); /* FF3.6-15 */
     background: -webkit-linear-gradient(-45deg,  #feccb1 0%,#f17432 50%,#ea5507 51%,#fb955e 100%); /* Chrome10-25,Safari5.1-6 */
@@ -23,7 +23,39 @@ html,body{
     -webkit-text-fill-color: transparent;
 }
 
-.error h3{
-	font-family: 'Roboto', sans-serif;
+.error p{
 	color:white;
+}
+
+.body-container{
+    margin-top: 10px;
+    
+    border: 2px solid black;
+    border-radius: 20px;
+}
+
+.body-title{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom: .2px solid black
+}
+
+.body-header{
+    font-size: 20px;
+}
+
+.body-info{
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.body-info ul{
+    background-color: rgba(255,0,0,.2);
+    border:.1px dotted black;
+    border-radius: 2px;
+    list-style-type: none;
+    padding-left: 5px
+}
+.body-info ul li:before{
+    content: '> ';
+    margin: 0 0 -1px 0;
 }
