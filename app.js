@@ -39,7 +39,7 @@ if(allowedIps[0] !== '0.0.0.0'){
     }else{
       if(process.env.LOGIPBLOCK){
         fs.exists(__dirname+'/logs/ipblocked.log',(exists)=>{
-          if(!exists) fs.writeFileSync(__dirname+'/logs/ipblocked.log','# Structure:\n# ip',null);
+          if(!exists) fs.writeFileSync(__dirname+'/logs/ipblocked.log','# Structure:\n# ip\n\n',null);
           fs.readFile(__dirname+'/logs/ipblocked.log', function (err, data) {
             if (err) console.log(err);
             if(data.indexOf(ip) == -1){      
@@ -48,13 +48,12 @@ if(allowedIps[0] !== '0.0.0.0'){
           });
         })                
       }
-      console.log(ip)
       return res.status(301).send({message: 'Your IP is not allowed to use this API',ip: ip});  
     }
   });
   Colorizer.ok('Loaded IP Block Middleware')  
 }else{
-  Colorizer.warn('ALLOWED_IPS set to 0.0.0.0 Allowing all ips.');
+  Colorizer.warn('No IP filtering active. Can be a security risk');  
 }
 
 
@@ -91,7 +90,7 @@ if(instance === 'dev'){
 
     if(process.env.LOG404){
       fs.exists(__dirname+'/logs/404.log',(exists)=>{
-        if(!exists) fs.writeFileSync(__dirname+'/logs/404.log','# Structure\n# ip,path',null);
+        if(!exists) fs.writeFileSync(__dirname+'/logs/404.log','# Structure\n# ip,path\n\n',null);
         fs.readFile(__dirname+'/logs/404.log', function (err, data) {
           if (err) console.log(err);    
           fs.appendFile(__dirname+'/logs/404.log',ip +','+requestUrl+ '\n',(err)=>{if(err)console.log(err)})          

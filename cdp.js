@@ -66,7 +66,7 @@ mongoose.connect('mongodb://' + Config.mongoIP +  ':' + Config.mongoPort + '/' +
 			Colorizer.value("Server ip",Config.serverIP);
 		Colorizer.value("Server port",Config.serverPort);
 
-		Colorizer.ok("Server OK and waiting for requests",true)
+		Colorizer.ok(`Server ${Colorizer.green('OK')} and waiting for requests`,true)
 	});
 })
 .catch(err => {
